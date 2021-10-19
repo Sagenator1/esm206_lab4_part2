@@ -1,5 +1,5 @@
 ---
-title: "interactive penguins"
+title: "Interactive Penguins"
 author: "Sage Davis"
 date: "10/19/2021"
 output: html_document
@@ -7,4 +7,28 @@ output: html_document
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, message = FALSE)
+library(tidyverse)
+library(palmerpenguins)
+library(plotly)
+library(DT)
 ```
+
+
+
+
+
+```{r}
+penguins_graph <- ggplot(data = penguins, aes(x = flipper_length_mm, body_mass_g)) +
+  geom_point(aes(color = species))
+
+ggplotly(penguins_graph)
+
+
+```
+
+Out of the box table interacting
+
+```{r}
+datatable(penguins)
+```
+
