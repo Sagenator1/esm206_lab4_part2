@@ -11,6 +11,7 @@ library(tidyverse)
 library(palmerpenguins)
 library(plotly)
 library(DT)
+library(here)
 ```
 
 
@@ -20,6 +21,8 @@ library(DT)
 ```{r}
 penguins_graph <- ggplot(data = penguins, aes(x = flipper_length_mm, body_mass_g)) +
   geom_point(aes(color = species))
+
+#interactive plot
 
 ggplotly(penguins_graph)
 
@@ -31,4 +34,14 @@ Out of the box table interacting
 ```{r}
 datatable(penguins)
 ```
+Geom bar counts of penguins by island fill by species. Save using ggsave()
+
+
+```{r}
+ggplot(data = penguins, aes(x = island)) +
+  geom_bar(aes(fill = species))
+
+ggsave(here("final_figures", "island_counts.png"))
+```
+
 
